@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CollabConnect</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Material Components -->
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" defer></script>
+
+<!-- Firebase SDK -->
+<script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script defer src="/__/firebase/init.js"></script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="full-screen-container">
+
+  <header class="header-full">
+    <h1>CollabConnect</h1>
+    <p class="subtitle">Seamless Video Collaboration</p>
+  </header>
+
+  <div class="videos-full">
+    <div class="video-wrapper">
+      <video id="localVideo" autoplay playsinline muted></video>
+      <p class="video-label">You</p>
+    </div>
+    <div class="video-wrapper">
+      <video id="remoteVideo" autoplay playsinline></video>
+      <p class="video-label">Participant</p>
+    </div>
+  </div>
+
+  <div class="buttons-full">
+    <button class="mdc-button mdc-button--raised" id="cameraBtn">
+      <i class="material-icons mdc-button__icon">perm_camera_mic</i>
+      Open Camera & Mic
+    </button>
+    <button class="mdc-button mdc-button--raised" disabled id="createBtn">
+      <i class="material-icons mdc-button__icon">group_add</i>
+      Create Room
+    </button>
+    <button class="mdc-button mdc-button--raised" disabled id="joinBtn">
+      <i class="material-icons mdc-button__icon">group</i>
+      Join Room
+    </button>
+    <button class="mdc-button mdc-button--raised" disabled id="hangupBtn">
+      <i class="material-icons mdc-button__icon">close</i>
+      Hang Up
+    </button>
+  </div>
+
+  <div id="currentRoom" class="current-room"></div>
+</div>
+
+<div class="mdc-dialog" id="room-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+      <h2 class="mdc-dialog__title" id="my-dialog-title">Join Room</h2>
+      <div class="mdc-dialog__content" id="my-dialog-content">
+        Enter Room ID:
+        <div class="mdc-text-field">
+          <input type="text" id="room-id" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="room-id">Room ID</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+      </div>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+          <span class="mdc-button__label">Cancel</span>
+        </button>
+        <button id="confirmJoinBtn" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+          <span class="mdc-button__label">Join</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>
+
+<script src="app.js?v=3" defer></script>
+</body>
+</html>

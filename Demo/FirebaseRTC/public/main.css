@@ -1,0 +1,131 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f5f7fa);
+}
+
+.full-screen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header-full {
+  text-align: center;
+}
+
+.header-full h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(-45deg, #42a5f5, #7e57c2, #ff7043, #26a69a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+.header-full p.subtitle {
+  margin: 5px 0 0 0;
+  font-size: 1.2rem;
+  color: #607d8b;
+}
+
+@keyframes gradientAnimation {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* Videos Section */
+.videos-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 20px;
+  width: 100%;
+}
+
+.video-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-wrapper video {
+  width: 480px;
+  max-width: 100%;
+  height: 270px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  object-fit: cover;
+}
+
+.video-label {
+  margin-top: 8px;
+  font-weight: 500;
+  color: #455a64;
+}
+
+/* Buttons Section */
+.buttons-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.buttons-full button {
+  min-width: 160px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+#cameraBtn { background: linear-gradient(135deg,#42a5f5,#1e88e5); }
+#createBtn { background: linear-gradient(135deg,#7e57c2,#5e35b1); }
+#joinBtn { background: linear-gradient(135deg,#26a69a,#00796b); }
+#hangupBtn { background: linear-gradient(135deg,#ef5350,#c62828); }
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+button:disabled {
+  background: #b0bec5 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.current-room {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #455a64;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .videos-full {
+    flex-direction: column;
+  }
+  .video-wrapper video {
+    width: 90%;
+    height: auto;
+  }
+}
